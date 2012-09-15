@@ -1,0 +1,23 @@
+<html>
+<head>
+<title> Cards for Zombies </title>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://cfz.snowme.ws:1337');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
+
+</head>
+<body>
+<h1>Cards for Zombies</h1><hr>
+<div id="connectForm">
+<form action="#">
+<input type="textbox" id="sessionid">
+<button type="submit" onclick="socket.emit('my other event', { it: 'clicked'});">Submit!</button>
+</form>
+</div>
+</body>
+</html>
